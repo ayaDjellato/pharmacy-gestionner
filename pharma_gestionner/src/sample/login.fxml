@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="450.0" prefWidth="350.0" style="-fx-background-color: #001835;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.logincontrol">
+<VBox fx:id="vbox" alignment="CENTER" prefHeight="450.0" prefWidth="350.0" style="-fx-background-color: #001835;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.logincontrol">
    <children>
       <Label minWidth="-Infinity" prefHeight="31.0" prefWidth="65.0" text="login" textFill="#fcf2f2">
          <font>
@@ -44,7 +44,7 @@
             <Insets left="80.0" right="100.0" />
          </VBox.margin>
       </PasswordField>
-      <Button fx:id="btn_log" focusTraversable="false" mnemonicParsing="false" onAction="#openDashboard" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #87cefa;" text="login">
+      <Button fx:id="btn_log" focusTraversable="false" mnemonicParsing="false" onAction="#opendashboard" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #87cefa;" text="login">
          <VBox.margin>
             <Insets right="20.0" top="40.0" />
          </VBox.margin></Button>

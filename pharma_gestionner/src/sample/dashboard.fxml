@@ -1,50 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Avatar?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="winP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.dashcontrol">
    <children>
-      <AnchorPane prefHeight="400.0" prefWidth="123.0" style="-fx-background-color: #001835;">
+      <AnchorPane layoutX="152.0" prefHeight="73.0" prefWidth="648.0" style="-fx-background-color: #001835;">
          <children>
-            <Pane prefHeight="73.0" prefWidth="153.0" style="-fx-background-color: #001835;" AnchorPane.leftAnchor="0.0">
+            <Label fx:id="lab" layoutX="536.0" layoutY="27.0" text="user name" textFill="#f8f8f8">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="215.0" layoutY="115.0" prefHeight="385.0" prefWidth="498.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Welcome ">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label layoutX="28.0" layoutY="79.0" text="latest sells" />
+            <TableView layoutX="28.0" layoutY="109.0" prefHeight="221.0" prefWidth="406.0">
+               <columns>
+                  <TableColumn prefWidth="129.0" text="id sells" />
+                  <TableColumn prefWidth="114.0" text="date " />
+                  <TableColumn prefWidth="84.0" text="houre" />
+                  <TableColumn prefWidth="78.0" text="total" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+      <AnchorPane prefHeight="600.0" prefWidth="177.0" style="-fx-background-color: #001835;">
+         <children>
+            <Pane prefHeight="73.0" prefWidth="177.0" style="-fx-background-color: #001835;" AnchorPane.leftAnchor="0.0">
                <children>
-                  <Label layoutX="38.0" layoutY="24.0" text="Dashboard" textFill="#fcfcfc">
+                  <Label layoutX="50.0" layoutY="24.0" text="Dashboard" textFill="#fcfcfc">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Button alignment="TOP_LEFT" layoutX="17.0" layoutY="88.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: #001835;" text="sells" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="88.0">
+            <Button fx:id="sell_btn" alignment="TOP_CENTER" layoutX="17.0" layoutY="88.0" mnemonicParsing="false" onAction="#opensells" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #001835;" text="sells" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="100.0">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="17.0" layoutY="136.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="119.0" style="-fx-background-color: #001835;" text="stock" textFill="WHITE" AnchorPane.topAnchor="136.0">
+            <Button fx:id="stk_btn" alignment="TOP_CENTER" layoutX="17.0" layoutY="136.0" mnemonicParsing="false" onAction="#openstock" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #001835;" text="stock" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="150.0">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="17.0" layoutY="187.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="119.0" style="-fx-background-color: #001835;" text="patients" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="187.0">
+            <Button fx:id="pt_btn" alignment="TOP_CENTER" layoutX="17.0" layoutY="187.0" mnemonicParsing="false" onAction="#openpatient" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #001835;" text="patients" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="200.0">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="152.0" prefHeight="73.0" prefWidth="450.0" style="-fx-background-color: #001835;">
-         <children>
-            <Label layoutX="293.0" layoutY="29.0" text="user name" textFill="#f8f8f8">
+            <Button fx:id="out_btn" alignment="TOP_CENTER" layoutX="17.0" layoutY="439.0" mnemonicParsing="false" onAction="#logout" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #001835;" text="log out" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="453.0">
                <font>
                   <Font size="13.0" />
                </font>
-            </Label>
-            <Avatar layoutX="374.0" layoutY="20.0" />
+            </Button>
          </children>
       </AnchorPane>
    </children>
