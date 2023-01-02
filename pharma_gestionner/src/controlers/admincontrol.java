@@ -85,7 +85,7 @@ public class admincontrol implements Initializable {
            Stage dash_board = new Stage();
             try{
               
-             fxml = FXMLLoader.load(getClass().getResource("/sample/add_user.fxml"));
+             fxml = FXMLLoader.load(getClass().getResource("/sample/patient_dashb.fxml"));
              Scene scene = new Scene(fxml);
              dash_board.setScene(scene);
              dash_board.show();
