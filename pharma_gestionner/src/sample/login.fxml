@@ -10,15 +10,23 @@
 
 <VBox fx:id="vbox" alignment="CENTER" prefHeight="450.0" prefWidth="350.0" style="-fx-background-color: #001835;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.logincontrol">
    <children>
-      <Label minWidth="-Infinity" prefHeight="31.0" prefWidth="65.0" text="login" textFill="#fcf2f2">
+      <Label alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="24.0" prefWidth="317.0" text="pharmacy management" textFill="#fcf2f2">
          <font>
-            <Font name="Arial" size="28.0" />
+            <Font name="Arial" size="18.0" />
          </font>
          <VBox.margin>
-            <Insets bottom="20.0" right="10.0" />
+            <Insets bottom="10.0" />
          </VBox.margin>
       </Label>
-      <Label text="username" textFill="#fff6f6">
+      <Label alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="34.0" prefWidth="112.0" text="WELCOME" textFill="#fcf2f2">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="10.0" left="70.0" right="70.0" />
+         </VBox.margin>
+      </Label>
+      <Label alignment="TOP_CENTER" text="username" textFill="#fff6f6">
          <font>
             <Font size="15.0" />
          </font>
@@ -28,7 +36,7 @@
       </Label>
       <TextField fx:id="tex" focusTraversable="false" prefHeight="31.0" prefWidth="280.0" promptText="username">
          <VBox.margin>
-            <Insets left="80.0" right="100.0" />
+            <Insets left="70.0" right="70.0" />
          </VBox.margin>
       </TextField>
       <Label alignment="TOP_LEFT" text="password" textFill="#e8e3e3">
@@ -41,12 +49,17 @@
       </Label>
       <PasswordField fx:id="pw_field" focusTraversable="false" prefHeight="31.0" prefWidth="171.0" promptText="password">
          <VBox.margin>
-            <Insets left="80.0" right="100.0" />
+            <Insets left="70.0" right="70.0" />
          </VBox.margin>
       </PasswordField>
+      <Label fx:id="label_err" text="                       " textFill="#fcfcfc">
+         <VBox.margin>
+            <Insets right="18.0" top="10.0" />
+         </VBox.margin>
+      </Label>
       <Button fx:id="btn_log" focusTraversable="false" mnemonicParsing="false" onAction="#opendashboard" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #87cefa;" text="login">
          <VBox.margin>
-            <Insets right="20.0" top="40.0" />
+            <Insets right="15.0" top="10.0" />
          </VBox.margin></Button>
    </children>
 </VBox>
