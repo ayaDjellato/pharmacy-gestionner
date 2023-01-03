@@ -4,54 +4,55 @@ import java.sql.Date;
 
 public class patient{
     
-    private int id;
-    private String fname;
-    private String lname;
-    private String phone;
-    private Date date;
+ private int id;
+ private String name;
+ private String prename;
+ private Date date;
+ private String phone;
 
-    public patient(){
-        super();
-    }
 
-    public int getid(){
-        return id;
-    }
-    public Date getdate(){
-        return date;
-    }
+ public int getId(){
+    return id;
+ }
+ public String getName(){
+    return name;
+ }
 
-    public String getname(){
-        return fname;
-    }
+ public String getPrename(){
+    return prename;
+ }
+ public String getPhone(){
+    return phone;
+ }
+ public Date getDate(){
+    return date;
+ }
+   
+public void setId(Integer i){
+    id = i;
+}
+public void setName(String n){
+    name = n;
+}
+public void setPrename(String m){
+    prename = m;
+}
+public void setPhone(String p){
+    phone = p;
+}
+public void setName(Date d){
+    date = d;
+}
 
-    public String getf_name(){
-        return lname;
-    }
-    public String getphone(){
-        return phone;
-    }
+ public patient(int i, String n, String m, String phone, Date d){
+    id = i;
+    name = n;
+    prename = m;
+    this.phone = phone;
+    date = d;
 
-    public void setname(String name){
-        fname = name;
-    }
-    public void setfname(String fi_name){
-        lname = fi_name;
-    }
 
-    public void setphone(String fphone){
-       phone = fphone;
-    }
-    public void setdate(Date ndate){
-        date = ndate;
-     }
+ }
 
-    public patient(int id, String fname, String lname, String phone, Date date){
-        this.date = date;
-        this.id = id;
-        this.fname =  fname;
-        this.lname = lname;
-        this.phone = phone;
-        
-    }
+
 }
