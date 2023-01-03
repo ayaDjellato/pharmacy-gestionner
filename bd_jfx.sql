@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  sam. 26 nov. 2022 à 15:15
+-- Généré le :  mer. 04 jan. 2023 à 00:50
 -- Version du serveur :  5.7.17
 -- Version de PHP :  5.6.30
 
@@ -34,6 +34,13 @@ CREATE TABLE `adminlog` (
   `password` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `adminlog`
+--
+
+INSERT INTO `adminlog` (`id`, `name`, `password`) VALUES
+(1, 'adm', '000');
+
 -- --------------------------------------------------------
 
 --
@@ -53,12 +60,23 @@ CREATE TABLE `manag_log` (
 --
 
 CREATE TABLE `patient` (
-  `ID_pat` int(100) NOT NULL,
-  `nom` varchar(30) NOT NULL,
-  `prenom` varchar(30) NOT NULL,
-  `date_vente` date NOT NULL,
-  `num_tel` varchar(9) NOT NULL
+  `IDp` int(100) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `firstn` varchar(30) NOT NULL,
+  `date` date NOT NULL,
+  `tel` varchar(9) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `patient`
+--
+
+INSERT INTO `patient` (`IDp`, `name`, `firstn`, `date`, `tel`) VALUES
+(27, 'ahmed', 'riali', '2023-01-04', '000'),
+(26, 'mohammed', 'salhi', '2023-01-04', '22345'),
+(25, 'feriel', 'dilmi', '2023-01-04', '0009809'),
+(18, 'asma', 'chikour', '2023-01-03', '0000009'),
+(19, 'asma', 'sili', '2023-01-03', '12345');
 
 -- --------------------------------------------------------
 
@@ -70,6 +88,13 @@ CREATE TABLE `recu_vente` (
   `id_recu` int(11) NOT NULL,
   `id_vente` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `recu_vente`
+--
+
+INSERT INTO `recu_vente` (`id_recu`, `id_vente`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -86,6 +111,13 @@ CREATE TABLE `stock` (
   `prix` int(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `stock`
+--
+
+INSERT INTO `stock` (`ID_med`, `nom`, `grammage`, `qte`, `categorie`, `prix`) VALUES
+(1, 'a', 10, 1, 'abc', 100);
+
 -- --------------------------------------------------------
 
 --
@@ -94,9 +126,16 @@ CREATE TABLE `stock` (
 
 CREATE TABLE `vendeur` (
   `id_v` int(100) NOT NULL,
-  `nom` varchar(40) NOT NULL,
+  `name` varchar(40) NOT NULL,
   `password` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `vendeur`
+--
+
+INSERT INTO `vendeur` (`id_v`, `name`, `password`) VALUES
+(1, 'v1', '00');
 
 -- --------------------------------------------------------
 
@@ -113,6 +152,13 @@ CREATE TABLE `vente` (
   `date_vente` date NOT NULL,
   `prix` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `vente`
+--
+
+INSERT INTO `vente` (`Id_vente`, `ID_med`, `id_v`, `ID_pat`, `qte_vendu`, `date_vente`, `prix`) VALUES
+(1, 1, 1, 1, 1, '2023-01-10', 100);
 
 --
 -- Index pour les tables déchargées
@@ -134,7 +180,7 @@ ALTER TABLE `manag_log`
 -- Index pour la table `patient`
 --
 ALTER TABLE `patient`
-  ADD PRIMARY KEY (`ID_pat`);
+  ADD PRIMARY KEY (`IDp`);
 
 --
 -- Index pour la table `recu_vente`
@@ -168,7 +214,7 @@ ALTER TABLE `vente`
 -- AUTO_INCREMENT pour la table `adminlog`
 --
 ALTER TABLE `adminlog`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `manag_log`
 --
@@ -178,27 +224,27 @@ ALTER TABLE `manag_log`
 -- AUTO_INCREMENT pour la table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `ID_pat` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDp` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT pour la table `recu_vente`
 --
 ALTER TABLE `recu_vente`
-  MODIFY `id_recu` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_recu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `ID_med` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID_med` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `vendeur`
 --
 ALTER TABLE `vendeur`
-  MODIFY `id_v` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_v` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `vente`
 --
 ALTER TABLE `vente`
-  MODIFY `Id_vente` int(11) NOT NULL AUTO_INCREMENT;COMMIT;
+  MODIFY `Id_vente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
