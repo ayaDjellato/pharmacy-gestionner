@@ -1,7 +1,3 @@
-// ***************************** PLEASE DO NOT MODIFY THIS FILE ******************************************************
-//********************************************************************************************************************
-
-
 
 package controlers;
 import java.io.IOException;
@@ -44,8 +40,14 @@ public class logincontrol implements Initializable {
     @FXML
     private Label lab;
 
+    @FXML
+    private Label label_err;
+
     private Parent fxml;
 
+
+    @FXML
+    private Label userlab;
 
     //log in to dashboard 
 
@@ -55,13 +57,13 @@ public class logincontrol implements Initializable {
       
        String sql = "select * from adminlog WHERE name = ? and password = ?";
        String sql2 = "select * from vendeur WHERE name = ? and password = ?";
-       cn = connectionsql.connectionbd();
+    
 
             pt = cn.prepareStatement(sql);
             pt.setString(1, name);
             pt.setString(2, pwd);
             res = pt.executeQuery();
-
+           
                 //admin log 
                 if(res.next()){
 
@@ -76,8 +78,7 @@ public class logincontrol implements Initializable {
                     dash_board.setScene(scene);
                     dash_board.show();
 
-                   }
-                    else{
+                   }else{
                         pt = cn.prepareStatement(sql2);
                         pt.setString(1, name);
                         pt.setString(2, pwd);
@@ -85,6 +86,7 @@ public class logincontrol implements Initializable {
                             if(res.next()){
 
                                 System.out.println("open dash board");
+                                
                                 vbox.getScene().getWindow().hide();
             
                                 Stage dash_board = new Stage();
@@ -96,11 +98,19 @@ public class logincontrol implements Initializable {
                                 dash_board.show();
             
 
+                            }else{
+                                if(name.isEmpty() || pwd.isEmpty()){
+                                    label_err.setText("there is an empty field !");
+                                    }else   label_err.setText("error incorrect infos");
                             }}
+
+                       
+
+                        }
        
 
     
-    }
+    
 
    @Override
    public void initialize(URL location, ResourceBundle resources) {
