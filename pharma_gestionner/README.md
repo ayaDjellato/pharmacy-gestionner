@@ -2,7 +2,11 @@
 
 this structure helps with the gestion of a pharmacy
 
-##Structure
+### description
+*in this work we have the login page as the first element, after login in as a user we enter the dashboard interface
+*in patient and stock dashboard we can add delete and search for a patient or stock in the database
+*in the add user only avaiable after login in as an admin (user: adm  pwd : 000) adding and deleting a user is possible
+
 
 ### Folder Structure
 
@@ -29,6 +33,7 @@ this work we have main functionalities:
 
 * login:
     * enter the username and password and hit login button you will automatically being recognized as a user or admin and the specific dashboard will               appear
+    
 
 * patient dashboard :
     * displays the patients in the database through a table with their id name and lastname last purshases and phone numbers
@@ -38,6 +43,8 @@ this work we have main functionalities:
      * by entering the name and lastname, phone number of the patient in text fields and hit add button the patient will be uploaded
      * an error message can be displayed to the user.
 
+* example for patient and login interface:
+      ![example video](https://user-images.githubusercontent.com/67550664/210804249-cd5e8f28-5fa5-4755-a6cc-7f5ae19d2f29.mp4)
 
 
 ### tools used in this project
