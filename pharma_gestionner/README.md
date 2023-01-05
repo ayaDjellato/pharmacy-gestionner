@@ -13,7 +13,7 @@ The workspace contains two folders by default, where:
 
 the compiled output files will be generated in the `bin` folder by default.
 
- `src` contains three main folders:
+####`src` contains three main folders:
     `controlers`: the folder who maintains all the different controllers of the interface 
     `models`: contains the models of the project such as patient vente and stock
     `sample`: contains the graphic interfaces build through scene builder presented in fxml format
