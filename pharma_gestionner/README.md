@@ -1,18 +1,42 @@
-## Getting Started
+## Pharmacy gestionner 
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+this structure helps with the gestion of a pharmacy
 
 ## Folder Structure
 
 The workspace contains two folders by default, where:
 
 - `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- `bin`: the folder to maintain dependencies
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+the compiled output files will be generated in the `bin` folder by default.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+> `src` contains three main folders:
+    `controlers`: the folder who maintains all the different controllers of the interface 
+    `models`: contains the models of the project such as patient vente and stock
+    `sample`: contains the graphic interfaces build through scene builder presented in fxml format
+>mainprint represent the main class of this work
 
-## Dependency Management
+## getting started
+this work we have main functionalities:
+* adding and deleting elements from stock and patients
+* login interface 
+* admin dashboard interface with add user (vendors) as additional functionality from random users
+* user (vendor) dashboard interface 
+* login:
+        *enter the username and password and hit login button you will automatically being recognized as a user or admin and the specific dashboard will               appear
+* patient dashboard :
+        *displays the patients in the database through a table with their id name and lastname last purshases and phone numbers
+        * a search bar to search for a specific patient in the database with their id or name in search bar and hit go
+        * to delete an element search for the id in search bar and hit go then if the user exist he will appear in the table then hit delete and refresh for            a full display
+        * a refresh button to redisplay all the patients in table
+        * an add user space to add a user when needed by entering the name and lastname, phone number of the patient and hit add button 
+        * an error message can be displayed to the user.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+
+
+## tools used in this project
+we used vscode an IDE
+php devserver for the database
+scene builder for the design interfaces 
+
