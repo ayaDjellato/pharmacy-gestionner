@@ -8,15 +8,14 @@ this structure helps with the gestion of a pharmacy
 
 The workspace contains two folders by default, where:
 
-- `src`: the folder to maintain sources
+- `src`: the folder to maintain sources as -`controlers`: the folder who maintains all the different controllers of the interface 
+    `models`: contains the models of the project such as patient vente and stock
+    `sample`: contains the graphic interfaces build through scene builder presented in fxml format
 - `bin`: the folder to maintain dependencies
 
 the compiled output files will be generated in the `bin` folder by default.
 
-####`src` contains three main folders:
-    `controlers`: the folder who maintains all the different controllers of the interface 
-    `models`: contains the models of the project such as patient vente and stock
-    `sample`: contains the graphic interfaces build through scene builder presented in fxml format
+
 mainprint represent the main class of this work
 
 ### user guide
