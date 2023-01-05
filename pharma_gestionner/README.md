@@ -3,9 +3,9 @@
 this structure helps with the gestion of a pharmacy
 
 ### description
-*in this work we have the login page as the first element, after login in as a user we enter the dashboard interface
-*in patient and stock dashboard we can add delete and search for a patient or stock in the database
-*in the add user only avaiable after login in as an admin (user: adm  pwd : 000) adding and deleting a user is possible
+* in this work we have the login page as the first element, after login in as a user we enter the dashboard interface
+* in patient and stock dashboard we can add delete and search for a patient or stock in the database
+* in the add user only avaiable after login in as an admin (user: adm  pwd : 000) adding and deleting a user is possible
 
 
 ### Folder Structure
@@ -48,7 +48,7 @@ this work we have main functionalities:
 
 
 ### tools used in this project
-we used vscode an IDE
-php devserver for the database
-scene builder for the design interfaces 
+* we used vscode an IDE
+* php devserver for the database
+* scene builder for the design interfaces 
 
