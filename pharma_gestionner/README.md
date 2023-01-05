@@ -29,7 +29,7 @@ this work we have main functionalities:
 * login:
         * enter the username and password and hit login button you will automatically being recognized as a user or admin and the specific dashboard will               appear
 * patient dashboard :
-                     * displays the patients in the database through a table with their id name and lastname last purshases and phone numbers
+                  * displays the patients in the database through a table with their id name and lastname last purshases and phone numbers
                      * a search bar to search for a specific patient in the database with their id or name in search bar and hit go
                      * to delete an element search for the id in search bar and hit go then if the user exist he will appear in the table then hit delete and refresh for a full display
                      * a refresh button to redisplay all the patients in table
