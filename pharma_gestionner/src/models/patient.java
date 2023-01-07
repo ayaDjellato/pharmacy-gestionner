@@ -11,6 +11,7 @@ public class patient{
  private String phone;
 
 
+
  public int getId(){
     return id;
  }
@@ -40,7 +41,7 @@ public void setPrename(String m){
 public void setPhone(String p){
     phone = p;
 }
-public void setName(Date d){
+public void setdate(Date d){
     date = d;
 }
 
