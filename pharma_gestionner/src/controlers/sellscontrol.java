@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -43,12 +44,11 @@ public class sellscontrol implements Initializable{
     ResultSet resp2;
 
     @FXML
+    private Label errorlab;
+    
+    @FXML
     private Button display;
 
-
-    @FXML
-    private Button paybtn;
-   
  
     @FXML
     private Button add_btn;
@@ -82,19 +82,25 @@ public class sellscontrol implements Initializable{
     private Pane pan;
 
     @FXML
-    private TableColumn<med, Integer> price_col;
+    private TableColumn<bill, Integer> price_col;
 
     @FXML
     private Button print_btn;
 
     @FXML
-    private TableColumn<med, Integer> qte_col;
+    private TableColumn<bill, Integer> qte_col;
 
     @FXML
     private TextField qte_tex;
 
     @FXML
     private TextField search_box;
+
+    @FXML
+    private TableView<bill> qte_tab;
+    @FXML
+    private TableColumn<med, Integer> unitprice;
+
 
     public ObservableList<med> data = FXCollections.observableArrayList();
     public ObservableList<vente> data2 = FXCollections.observableArrayList();
@@ -149,30 +155,25 @@ public class sellscontrol implements Initializable{
 
 
         private ObservableList<med> addmeddlist;
-        String query = "select id_med FROM recu_vente where ";
-        public void showventitems() throws SQLException{
-
-                ptp = cnp.prepareStatement(query);
-                resp = ptp.executeQuery(); 
-                while(resp.next()){ 
-                System.out.println(resp.getInt("id_med"));
-
-
-                String sqll = "SELECT * FROM stock INNER JOIN recu_vente WHERE stock.ID_med = recu_vente.id_med";
-                
-
         
-                addmeddlist = getsellmed(sqll);
+        String query = "select * FROM stock JOIN recu_vente on stock.ID_med = recu_vente.id_med ";
+        public void showarticle() throws SQLException{
+
+           
+
+
+                addmeddlist = getsellmed(query);
+                
 
                 System.out.println(addmeddlist);
              
-                }
+                
 
                 //adding into each cell the extracted element into the fxml columns
                 med_col.setCellValueFactory(new PropertyValueFactory<med, String>("name"));
                 gram_col.setCellValueFactory(new PropertyValueFactory<med, Integer>("gram"));
-                price_col.setCellValueFactory(new PropertyValueFactory<med, Integer>("price"));
-                qte_col.setCellValueFactory(new PropertyValueFactory<med, Integer>("qte"));
+                unitprice.setCellValueFactory(new PropertyValueFactory<med, Integer>("price"));
+                
                 
                 //add all elements into the fxml table
                 bill_tab.setItems(data);
@@ -180,104 +181,18 @@ public class sellscontrol implements Initializable{
 
     }
 
+    private ObservableList<bill> addventeqte;
+        String queryb = "select * FROM recu_vente ";
+        public void showsqte() throws SQLException{
 
-    @FXML
-    void pay(MouseEvent event) throws SQLException {
+                addventeqte = getbill(queryb);
 
+                price_col.setCellValueFactory(new PropertyValueFactory<bill, Integer>("prix"));
+                qte_col.setCellValueFactory(new PropertyValueFactory<bill, Integer>("qte"));
+                qte_tab.setItems(datab);
 
-        int idm = Integer.parseInt(id_med.getText());
-        Integer qte = Integer.parseInt(qte_tex.getText());
-        String pname = name_tex.getText();
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        }
 
-
-       
-
-
-        //main query
-        String queryv = "INSERT into vente (ID_med, id_v, ID_pat, qte_vendu, date_vente)values(?,?,?,?,?)";
-            ptp = cnp.prepareStatement(queryv);
-
-        
-
-
-        //get vendor id
-        String sqv = "select id_v FROM vendeur WHERE name = '"+vendor.getLog()+"' and password='"+vendor.getPwd()+"' ";
-            ptp2 = cnp.prepareStatement(sqv);
-            resp2 = ptp2.executeQuery();
-            System.out.println("log: ");
-
-            System.out.println(vendor.getLog());
-            System.out.println(vendor.getPwd());
-
-
-       
-        
-    
-            
-            try {
-
-                ptp.setInt(1, idm);
-               
-                //add idv 
-                while(resp2.next()){
-                   ptp.setInt(2, resp2.getInt("id_v"));
-
-                   System.out.println("idv: ");
-                   System.out.println(resp2.getInt("id_v"));
-                    }
-                
-
-                    
-                query = "select IDp FROM patient WHERE name = '"+pname+"' and firstn='"+last_n.getText()+"' ";
-                ptp2 = cnp.prepareStatement(query);
-                resp2 = ptp2.executeQuery();
-                
-                while(resp2.next()){
-                int b = resp2.getInt("IDp");
-                System.out.println("idp");
-                System.out.println(b);
-                ptp.setInt(3, b);
-
-                }
-
-                ptp.setInt(4, qte);
-                ptp.setString(5, String.valueOf(formatter.format(now)));
-
-                
-
-                query = "select price FROM recu_vente WHERE ID_med = '"+idm+"' ";
-                ptp2 = cnp.prepareStatement(query);
-                resp2 = ptp2.executeQuery();
-                
-                while(resp2.next()){
-                int b = resp2.getInt("price");
-                System.out.println("price");
-                System.out.println(b);
-                ptp.setInt(4, b);
-
-                }
-
-                int n = ptp.executeUpdate();
-                System.out.println(n);
-
-    
-
-
-                
-            
-              
-
-        
-       } catch (Exception e) {
-        // TODO: handle exception
-        System.out.println("error");
-       }
-
- 
-    } 
-    
     
     
     @FXML
@@ -311,7 +226,11 @@ public class sellscontrol implements Initializable{
                 System.out.println(ptp);
                 int n = ptp.executeUpdate();
                 System.out.println(n);
-                showventitems();
+
+                qte_tab.getItems().clear();
+                bill_tab.getItems().clear();
+                showarticle();
+                showsqte();
       
         }catch(Exception e){
             System.out.println("error in bill");
@@ -331,7 +250,7 @@ public class sellscontrol implements Initializable{
 
         while(resp.next()){
         
-        datab.add(new bill(resp.getInt("id_recu"), resp.getInt("id_vente"), resp.getInt("id_med"),resp.getInt("quantity"),resp.getDate("date"),resp.getInt("price")));
+        datab.add(new bill(resp.getInt("id_recu"), resp.getInt("id_med"),resp.getInt("quantity"),resp.getDate("date"),resp.getInt("priceb")));
 
            
         }
@@ -345,11 +264,11 @@ public class sellscontrol implements Initializable{
     @FXML
     void deletm(MouseEvent event) throws SQLException {
 
-        Integer i =Integer.parseInt(search_box.getText());
+        Integer  i =Integer.parseInt(search_box.getText());
 
 
         //sql request to delete element recognized by his id
-        String sql = "DELETE FROM recu_vente WHERE id_med = '"+i+"' ";
+        String sql = "DELETE FROM recu_vente WHERE id_recu ='"+i+"'  ";
 
         //execute the operation !! dont forget this op!!
         ptp = cnp.prepareStatement(sql);
@@ -360,11 +279,17 @@ public class sellscontrol implements Initializable{
         //execute the operation 
         int n = ptp.executeUpdate();
         System.out.println(n);
+        qte_tab.getItems().clear();
         
         
         //clear the table after deleting to show success of the operation 
-        //bill_tab.getItems().clear();
-        //showventitems();
+        bill_tab.getItems().clear();
+        showarticle();
+        showsqte();
+        
+        
+        
+        
     }
         catch (Exception e) {
             System.out.println("error cant delete");
@@ -391,6 +316,9 @@ public class sellscontrol implements Initializable{
           e.printStackTrace();
       }
     }
+
+
+
     @FXML
     void search(MouseEvent event) {
         int i = Integer.parseInt(search_box.getText());
@@ -401,7 +329,7 @@ public class sellscontrol implements Initializable{
         try {
 
             //simple display of the result 
-            //pattable.getItems().clear();
+           
             ptp = cnp.prepareStatement(sqll);
             resp = ptp.executeQuery();
 
@@ -409,7 +337,10 @@ public class sellscontrol implements Initializable{
             System.out.println(resp.getInt("ID_med"));
 
             }
-            showventitems();
+            qte_tab.getItems().clear();
+            bill_tab.getItems().clear();
+            showarticle();
+            showsqte();
            
 
         } catch (Exception e) {
@@ -426,7 +357,8 @@ public class sellscontrol implements Initializable{
 
         cnp = connectionsql.connectionbd();
         try {
-            showventitems();
+            showarticle();
+            showsqte();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

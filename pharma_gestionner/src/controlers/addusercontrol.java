@@ -20,8 +20,6 @@ public class addusercontrol implements Initializable{
     Connection cnp;
     PreparedStatement ptp;
     ResultSet resp;
-
-
     @FXML
     private Label errorlab;
 
@@ -37,6 +35,13 @@ public class addusercontrol implements Initializable{
 
     @FXML
     private TextField pwd;
+
+    @FXML
+    private Button delete;
+
+    @FXML
+    private Label warninglab;
+
 
     @FXML
     void btnRegisterClick(MouseEvent event) {
@@ -60,6 +65,7 @@ public class addusercontrol implements Initializable{
                 
                     int n = ptp.executeUpdate();
                     System.out.println(n);
+                    warninglab.setText("add success");
 
                
             } catch (SQLException var6) {
@@ -69,6 +75,34 @@ public class addusercontrol implements Initializable{
 
 
            
+        }
+
+        @FXML
+        void delete(MouseEvent event) throws SQLException {
+
+        //sql request to delete element recognized by his id
+        String sql = "DELETE FROM vendeur WHERE lastname = '"+lastn.getText()+"' and name = '"+firstn.getText()+"'";
+
+        //execute the operation !! dont forget this op!!
+        ptp = cnp.prepareStatement(sql);
+       
+        warninglab.setText("");
+       try{ 
+
+        //execute the operation 
+        int n = ptp.executeUpdate();
+        System.out.println(n);
+        warninglab.setText("delete success");
+        
+        
+        
+        
+    }
+        catch (Exception e) {
+            System.out.println("error cant delete");
+            e.printStackTrace();
+        } 
+    
         }
 
         

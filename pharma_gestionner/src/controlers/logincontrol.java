@@ -50,7 +50,7 @@ public class logincontrol implements Initializable {
     @FXML
     private Label userlab;
 
-    //log in to dashboard 
+    //*************************************login to dashboard ******************************
    
 
     public void opendashboard() throws SQLException, IOException {
@@ -66,15 +66,14 @@ public class logincontrol implements Initializable {
        if(name.isEmpty() || pwd.isEmpty()){
         label_err.setText("there is an empty field !");
         }else{ 
-
-            pt = cn.prepareStatement(sql);
+             pt = cn.prepareStatement(sql);
             pt.setString(1, name);
             pt.setString(2, pwd);
             res = pt.executeQuery();
            
                 //admin log 
                 if(res.next()){
-
+                  
                     System.out.println("open dash board");
                     vbox.getScene().getWindow().hide();
 
@@ -87,7 +86,7 @@ public class logincontrol implements Initializable {
                     dash_board.show();
 
                    }else{
-
+                    //vendor log
                         pt = cn.prepareStatement(sql2);
                         pt.setString(1, name);
                         pt.setString(2, pwd);
@@ -113,7 +112,7 @@ public class logincontrol implements Initializable {
                                 pt.setString(2, pwd);
                                 res = pt.executeQuery();
                             if(res.next()){
-
+                                // manager log
                                 System.out.println("open dash board");
                                 
                                 vbox.getScene().getWindow().hide();

@@ -1,30 +1,55 @@
 package controlers;
 import java.net.URL;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.connectionsql;
+import models.user;
 
+
+// ***************************admin home ************************************************************
+//************************************************************************************************ */
 
 public class dashcontrol implements Initializable {
+   
+    Connection cnp;
+    PreparedStatement ptp;
+    ResultSet resp;
 
+    @FXML
+    private TableView<user> empl_tab;
+
+    @FXML
+    private TableColumn<user, Integer> id_col;
+
+    @FXML
+    private TableColumn<user, String> lname_col;
+
+    @FXML
+    private TableColumn<user, String> name_col;
     @FXML
     private Button add_btn;
 
     @FXML
     private Button pt_btn;
 
-    @FXML
-    private Button sell_btn;
-
+    
     @FXML
     private Button stk_btn;
 
@@ -35,11 +60,12 @@ public class dashcontrol implements Initializable {
     private AnchorPane winP;
     @FXML
     private Parent fxml;
-    
+
+ 
    
 
 
-    // log out methode
+    //*************************************log out methode **********************************************************
     @FXML
     public void logout() {
         
@@ -62,7 +88,7 @@ public class dashcontrol implements Initializable {
     
 
 
-    // patient panel
+    //******************************** patient panel ********************************************************
     @FXML
     public void openpatient() {
 
@@ -71,7 +97,7 @@ public class dashcontrol implements Initializable {
            Stage dash_board = new Stage();
             try{
               
-             fxml = FXMLLoader.load(getClass().getResource("/sample/add_user.fxml"));
+             fxml = FXMLLoader.load(getClass().getResource("/sample/patient_dashb.fxml"));
              Scene scene = new Scene(fxml);
              dash_board.setScene(scene);
              dash_board.show();
@@ -84,30 +110,7 @@ public class dashcontrol implements Initializable {
 
     
 
-
-    // sells panel
-    @FXML
-    public void opensells() {
-        System.out.println("open dash board");
-    
-           Stage dash_board = new Stage();
-            try{
-              
-             fxml = FXMLLoader.load(getClass().getResource("/sample/sells.fxml"));
-             Scene scene = new Scene(fxml);
-             dash_board.setScene(scene);
-             dash_board.show();
-    
-         }catch(Exception e){
-             e.printStackTrace();
-         }
-
-    }
-
-    
-
-
-    // stock panel
+    // *******************************stock panel*********************************************************
     @FXML
     public void openstock() {
         System.out.println("open dash board");
@@ -127,16 +130,63 @@ public class dashcontrol implements Initializable {
         }
 
 
-       
+        //*********************emplee table in home ******************************************************* */
+        public ObservableList<user> data = FXCollections.observableArrayList();
+        String sql = "select * FROM vendeur";
+        public ObservableList<user> getuser() throws SQLException {
+    
+            
+            ptp = cnp.prepareStatement(sql);
+            resp = ptp.executeQuery();
+    
+            while(resp.next()){
+            
+            data.add(new user(resp.getInt("id_v"), resp.getString("name"), resp.getString("lastname")));
+    
+               
+            }
         
+            
+            return data;
+    
+    
+        }
+       
+        private ObservableList<user> userlist;
+        public void showuser() throws SQLException{
+  
+          userlist = getuser();
+  
+  
+          //adding into each cell the extracted element into the fxml columns
+          id_col.setCellValueFactory(new PropertyValueFactory<user, Integer>("idu"));
+          name_col.setCellValueFactory(new PropertyValueFactory<user, String>("name"));
+          lname_col.setCellValueFactory(new PropertyValueFactory<user, String>("lname"));
+       
+          //add all elements into the fxml table
+          empl_tab.setItems(data);
+  
+  
+      }
+        
+
+
+       //*************************************************end of empleyee table***********************************************
+     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
         
-        
+        cnp = connectionsql.connectionbd();
+        try {
+            showuser();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
     }
 
    
     
     
-}

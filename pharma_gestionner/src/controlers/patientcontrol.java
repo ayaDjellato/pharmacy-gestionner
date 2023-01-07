@@ -24,7 +24,7 @@ import javafx.scene.input.MouseEvent;
 
 import javafx.fxml.Initializable;
 
-
+// ***************************patient dashboard*************************
 public class patientcontrol implements Initializable {
 
     Connection cnp;
@@ -81,7 +81,7 @@ public class patientcontrol implements Initializable {
     
     String sql = "select * FROM patient";
 
-  //general fun to get patient model
+  //******************general function to get patient model******************
     public ObservableList<patient> getpatien(String sql) throws SQLException {
 
         
@@ -120,6 +120,7 @@ public class patientcontrol implements Initializable {
 
     }
 
+    //************************************************************************** */
 
     //adding patient
     @FXML
@@ -171,6 +172,8 @@ public class patientcontrol implements Initializable {
        
     }
 
+
+    //**************************delete patient*********************** 
     @FXML
     void deletepatient(MouseEvent event) throws SQLException {
         Integer i =Integer.parseInt(search.getText());
@@ -200,6 +203,8 @@ public class patientcontrol implements Initializable {
         } 
     }
 
+
+    //**********************refresh table****************************
     @FXML
     void refresh(MouseEvent event) throws SQLException {
         warninglab.setText("");
@@ -208,14 +213,14 @@ public class patientcontrol implements Initializable {
       
     }
 
+    //*******************search in database***********************************
+
     @FXML
     void search(MouseEvent event) {
         warninglab.setText("");
 
         //sql search operation 
         String sqll = "select IDp,name, firstn,date, tel  FROM patient WHERE IDp = '"+search.getText()+"' or firstn= '"+search.getText()+"' ";
-
-     
 
         try {
 

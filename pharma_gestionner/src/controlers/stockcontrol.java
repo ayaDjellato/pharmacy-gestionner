@@ -21,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 import models.connectionsql;
 import models.med;
 
+//***************************stock interface********************************************
 public class stockcontrol implements Initializable {
 
     Connection cnp;
@@ -53,7 +54,7 @@ public class stockcontrol implements Initializable {
     private TextField med_gram;
 
     @FXML
-    private Button modify_btn;
+    private Button refresh;
 
     @FXML
     private TableColumn<med, String> name_col;
@@ -79,7 +80,7 @@ public class stockcontrol implements Initializable {
     @FXML
     private TableView<med> tab;
     @FXML
-    private Label warninglan;
+    private Label warninglab;
 
     public ObservableList<med> data = FXCollections.observableArrayList();
     
@@ -136,15 +137,15 @@ public class stockcontrol implements Initializable {
         String price = price_tex.getText();
       
         
-        
+        warninglab.setText("");
         //error control in case the cells are empty
 
         if(name =="" || gram == "" || qte == "" || cat == "" || price == ""){
-            warninglan.setText("please fill all the fields");
+            warninglab.setText("please fill all the fields");
         }
 
         else{ 
-            warninglan.setText("");
+            warninglab.setText("");
 
             //sql request for insert
             String sql2 = "INSERT into stock (name, grammage, qte, categorie, price)values(?,?,?,?,?)";
@@ -181,13 +182,43 @@ public class stockcontrol implements Initializable {
     }
 
     @FXML
-    void deletemed(MouseEvent event) {
+    void deletemed(MouseEvent event) throws SQLException {
+
+        Integer i =Integer.parseInt(search_box.getText());
+
+
+        //sql request to delete element recognized by his id
+        String sql = "DELETE FROM stock WHERE ID_med = '"+i+"' ";
+
+        //execute the operation !! dont forget this op!!
+        ptp = cnp.prepareStatement(sql);
+       
+        warninglab.setText("");
+       try{ 
+
+        //execute the operation 
+        int n = ptp.executeUpdate();
+        System.out.println(n);
+        
+        
+        //clear the table after deleting to show success of the operation 
+       
+        showmed(sql);
+    }
+        catch (Exception e) {
+            System.out.println("error cant delete");
+            e.printStackTrace();
+        } 
 
     }
 
     @FXML
-    void modifymed(MouseEvent event) {
-
+    void refresh(MouseEvent event) throws SQLException {
+       
+        warninglab.setText("");
+        
+        tab.getItems().clear();
+        showmed("select * FROM stock");
     }
 
     @FXML
@@ -200,14 +231,10 @@ public class stockcontrol implements Initializable {
         try {
 
             //simple display of the result 
-            tab.getItems().clear();
+           
             ptp = cnp.prepareStatement(sqll);
             resp = ptp.executeQuery();
-
-            while(resp.next()){ 
-            System.out.println(resp.getInt("ID_med"));
-
-            }
+            tab.getItems().clear();
             showmed(sqll);
            
 
