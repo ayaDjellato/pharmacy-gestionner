@@ -1,5 +1,6 @@
 package controlers;
 import java.net.URL;
+
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,8 +8,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import models.connectionsql;
 
 
 public class dashcontrol implements Initializable {
@@ -30,10 +33,10 @@ public class dashcontrol implements Initializable {
 
     @FXML
     private AnchorPane winP;
-
+    @FXML
     private Parent fxml;
-
-
+    
+   
 
 
     // log out methode
@@ -112,7 +115,7 @@ public class dashcontrol implements Initializable {
            Stage dash_board = new Stage();
             try{
               
-             fxml = FXMLLoader.load(getClass().getResource("/sample/medic_dashb.fxml"));
+             fxml = FXMLLoader.load(getClass().getResource("/sample/mandash.fxml"));
              Scene scene = new Scene(fxml);
              dash_board.setScene(scene);
              dash_board.show();
@@ -123,9 +126,13 @@ public class dashcontrol implements Initializable {
 
         }
 
+
+       
+        
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
+        
         
     }
 

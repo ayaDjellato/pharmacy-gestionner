@@ -7,8 +7,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
@@ -81,7 +79,7 @@ public class patientcontrol implements Initializable {
 
     public ObservableList<patient> data = FXCollections.observableArrayList();
     
-  String sql = "select * FROM patient";
+    String sql = "select * FROM patient";
 
   //general fun to get patient model
     public ObservableList<patient> getpatien(String sql) throws SQLException {
@@ -213,7 +211,6 @@ public class patientcontrol implements Initializable {
     @FXML
     void search(MouseEvent event) {
         warninglab.setText("");
-        // IDp = '"+Integer.parseInt(search.getText())+"'
 
         //sql search operation 
         String sqll = "select IDp,name, firstn,date, tel  FROM patient WHERE IDp = '"+search.getText()+"' or firstn= '"+search.getText()+"' ";

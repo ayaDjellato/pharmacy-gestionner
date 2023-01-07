@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.connectionsql;
+import models.vendor;
 
 
 public class logincontrol implements Initializable {
@@ -50,14 +51,21 @@ public class logincontrol implements Initializable {
     private Label userlab;
 
     //log in to dashboard 
+   
 
     public void opendashboard() throws SQLException, IOException {
     String name = tex.getText();
     String pwd = pw_field.getText();
+   
       
        String sql = "select * from adminlog WHERE name = ? and password = ?";
        String sql2 = "select * from vendeur WHERE name = ? and password = ?";
+       String sql3 = "select * from manag_log WHERE name = ? and password = ?";
     
+
+       if(name.isEmpty() || pwd.isEmpty()){
+        label_err.setText("there is an empty field !");
+        }else{ 
 
             pt = cn.prepareStatement(sql);
             pt.setString(1, name);
@@ -79,10 +87,31 @@ public class logincontrol implements Initializable {
                     dash_board.show();
 
                    }else{
+
                         pt = cn.prepareStatement(sql2);
                         pt.setString(1, name);
                         pt.setString(2, pwd);
                         res = pt.executeQuery();
+                            if(res.next()){
+                                vendor v = new vendor(name, pwd);
+                                
+                                System.out.println("open dash board");
+                                vbox.getScene().getWindow().hide();
+            
+                                Stage dash_board = new Stage();
+                                
+                                
+                                fxml = FXMLLoader.load(getClass().getResource("/sample/sells.fxml"));
+                                Scene scene = new Scene(fxml);
+                                dash_board.setScene(scene);
+                                dash_board.show();
+            
+
+                            }else{
+                                pt = cn.prepareStatement(sql3);
+                                pt.setString(1, name);
+                                pt.setString(2, pwd);
+                                res = pt.executeQuery();
                             if(res.next()){
 
                                 System.out.println("open dash board");
@@ -96,20 +125,16 @@ public class logincontrol implements Initializable {
                                 Scene scene = new Scene(fxml);
                                 dash_board.setScene(scene);
                                 dash_board.show();
-            
-
-                            }else{
-                                if(name.isEmpty() || pwd.isEmpty()){
-                                    label_err.setText("there is an empty field !");
-                                    }else   label_err.setText("error incorrect infos");
-                            }}
-
-                       
-
+                                
+                            }else label_err.setText("error incorrect infos");
                         }
-       
-
-    
+                        }
+                       
+                    }
+                       
+                    
+        }
+  
     
 
    @Override
