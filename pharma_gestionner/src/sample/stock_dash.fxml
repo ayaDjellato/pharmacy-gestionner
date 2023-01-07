@@ -48,7 +48,7 @@
       </Pane>
       <Button fx:id="add_btn" layoutX="114.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#addmed" prefHeight="20.0" prefWidth="150.0" text="add" AnchorPane.leftAnchor="114.0" AnchorPane.rightAnchor="537.0" />
       <Button fx:id="delet_btn" layoutX="300.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#deletemed" prefHeight="25.0" prefWidth="158.0" text="delete" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="342.0" />
-      <Button fx:id="modify_btn" layoutX="486.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#modifymed" prefHeight="25.0" prefWidth="149.0" text="modify" AnchorPane.leftAnchor="486.0" AnchorPane.rightAnchor="165.0" />
+      <Button fx:id="modify_btn" layoutX="486.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#modifymed" prefHeight="25.0" prefWidth="149.0" text="refresh" AnchorPane.leftAnchor="486.0" AnchorPane.rightAnchor="165.0" />
       <Label fx:id="warninglan" layoutX="458.0" layoutY="38.0" text=" " textFill="#e1dddd">
          <font>
             <Font size="14.0" />

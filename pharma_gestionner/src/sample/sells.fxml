@@ -34,13 +34,13 @@
             <Label layoutX="195.0" layoutY="14.0" text="last name patient" textFill="#eee5e5" />
          </children>
       </Pane>
-      <Pane layoutX="28.0" layoutY="360.0" prefHeight="76.0" prefWidth="380.0">
+      <Pane layoutX="21.0" layoutY="360.0" prefHeight="76.0" prefWidth="380.0">
          <children>
             <Button fx:id="add_btn" layoutX="21.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#addelem" prefHeight="20.0" prefWidth="150.0" text="add" />
             <Button fx:id="delet_btn" layoutX="189.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#deletm" prefHeight="25.0" prefWidth="158.0" text="delete" />
          </children>
       </Pane>
-      <Button fx:id="print_btn" layoutX="527.0" layoutY="442.0" mnemonicParsing="false" onAction="#printfun" prefHeight="25.0" prefWidth="149.0" text="print" />
+      <Button fx:id="display" layoutX="614.0" layoutY="444.0" mnemonicParsing="false" onAction="#display" prefHeight="25.0" prefWidth="149.0" text="stock" />
       <Pane layoutX="49.0" layoutY="219.0" prefHeight="31.0" prefWidth="581.0" />
       <Pane fx:id="pan" layoutX="14.0" layoutY="210.0" prefHeight="150.0" prefWidth="394.0">
          <children>
@@ -58,5 +58,6 @@
             <TableColumn fx:id="price_col" prefWidth="82.0" text="price" />
         </columns>
       </TableView>
+      <Button fx:id="paybtn" layoutX="444.0" layoutY="444.0" mnemonicParsing="false" onMouseClicked="#pay" prefHeight="25.0" prefWidth="149.0" text="pay" />
    </children>
 </AnchorPane>

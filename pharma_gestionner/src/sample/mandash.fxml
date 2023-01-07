@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #001835;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.stockcontrol">
+   <children>
+      <Label layoutX="47.0" layoutY="32.0" prefHeight="28.0" prefWidth="73.0" text="Search" textFill="#f8f8f8">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TextField fx:id="search_box" layoutX="140.0" layoutY="34.0" promptText="identifier" />
+      <Button fx:id="gobtn" layoutX="308.0" layoutY="31.0" mnemonicParsing="false" onMouseClicked="#search" style="-fx-background-color: #001835;" text="go" textFill="#eeeeee">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tab" layoutX="64.0" layoutY="130.0" prefHeight="276.0" prefWidth="672.0" style="-fx-background-color: #001835;" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="64.0">
+         <columns>
+            <TableColumn fx:id="id_col" prefWidth="90.0" text="id" />
+            <TableColumn fx:id="name_col" prefWidth="100.0" text="name" />
+            <TableColumn fx:id="gram_col" minWidth="13.0" prefWidth="100.0" text="grammes" />
+            <TableColumn fx:id="cat_col" prefWidth="130.0" text="category" />
+            <TableColumn fx:id="qte_col" prefWidth="135.0" text="quantity" />
+            <TableColumn fx:id="price_col" prefWidth="112.0" text="price" />
+         </columns>
+      </TableView>
+      <Button fx:id="modify_btn" layoutX="375.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#modifymed" prefHeight="25.0" prefWidth="149.0" text="refresh" AnchorPane.leftAnchor="375.0" AnchorPane.rightAnchor="276.0" />
+      <Label fx:id="warninglan" layoutX="458.0" layoutY="38.0" text=" " textFill="#e1dddd">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
