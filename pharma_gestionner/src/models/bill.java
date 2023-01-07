@@ -7,7 +7,7 @@ public class bill {
     private int idbill;
     private int qte;
     private int prix;
-    private int id_vente;
+    
     private int id_med;
     private Date date;
 
@@ -21,9 +21,7 @@ public class bill {
     public int getQte(){
        return qte;
     }
-    public int getIdvente(){
-       return id_vente;
-    }
+    
    
     
     public int getPrix(){
@@ -44,9 +42,7 @@ public class bill {
    public void setQte(Integer i){
        qte = i;
    }
-   public void setIdvente(Integer n){
-        id_vente = n;
-   }
+  
    public void setPrix(int m){
        prix = m;
    }
@@ -60,10 +56,10 @@ public class bill {
 
 
    
-    public bill(int j, int a, int b, int e,  Date d, int f){
+    public bill(int j, int b, int e,  Date d, int f){
         
         idbill = j;
-        id_vente = a;
+
         id_med = b;
         qte = e;
         date = d;
