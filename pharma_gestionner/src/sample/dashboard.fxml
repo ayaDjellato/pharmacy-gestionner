@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -41,17 +43,12 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="sell_btn" alignment="TOP_CENTER" layoutX="17.0" layoutY="92.0" mnemonicParsing="false" onAction="#opensells" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #001835;" text="sells" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="92.0">
+            <Button fx:id="stk_btn" alignment="TOP_CENTER" layoutX="17.0" layoutY="103.0" mnemonicParsing="false" onAction="#openstock" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #001835;" text="stock" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="103.0">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button fx:id="stk_btn" alignment="TOP_CENTER" layoutX="17.0" layoutY="136.0" mnemonicParsing="false" onAction="#openstock" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #001835;" text="stock" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="150.0">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="pt_btn" alignment="TOP_CENTER" layoutX="17.0" layoutY="187.0" mnemonicParsing="false" onAction="#openpatient" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #001835;" text="patients" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="200.0">
+            <Button fx:id="pt_btn" alignment="TOP_CENTER" layoutX="17.0" layoutY="155.0" mnemonicParsing="false" onAction="#openpatient" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #001835;" text="patients" textFill="WHITE" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="155.0">
                <font>
                   <Font size="13.0" />
                </font>
@@ -63,5 +60,16 @@
             </Button>
          </children>
       </AnchorPane>
+      <Pane layoutX="195.0" layoutY="88.0" prefHeight="412.0" prefWidth="518.0">
+         <children>
+            <TableView fx:id="empl_tab" layoutX="31.0" layoutY="138.0" prefHeight="233.0" prefWidth="333.0">
+               <columns>
+                  <TableColumn fx:id="id_col" prefWidth="129.0" text="id vendor" />
+                  <TableColumn fx:id="name_col" prefWidth="114.0" text="name" />
+                  <TableColumn fx:id="lname_col" prefWidth="65.0" text="lastnam" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

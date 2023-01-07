@@ -26,12 +26,12 @@
                   <Font size="27.0" />
                </font>
             </Label>
-            <Label layoutX="28.0" layoutY="79.0" text="latest connections " />
-            <TableView layoutX="28.0" layoutY="109.0" prefHeight="221.0" prefWidth="309.0">
+            <Label layoutX="28.0" layoutY="79.0" text="employee list" />
+            <TableView fx:id="empl_tab" layoutX="28.0" layoutY="109.0" prefHeight="221.0" prefWidth="308.0">
               <columns>
-                <TableColumn prefWidth="129.0" text="user name" />
-                <TableColumn prefWidth="114.0" text="date " />
-                  <TableColumn prefWidth="65.0" text="houre" />
+                <TableColumn fx:id="id_col" prefWidth="129.0" text="id vendor" />
+                <TableColumn fx:id="name_col" prefWidth="114.0" text="name" />
+                  <TableColumn fx:id="lname_col" prefWidth="65.0" text="lastnam" />
               </columns>
             </TableView>
          </children>

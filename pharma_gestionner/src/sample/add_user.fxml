@@ -29,12 +29,16 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Pane layoutX="66.0" layoutY="250.0" prefHeight="76.0" prefWidth="621.0">
+      <Pane layoutX="157.0" layoutY="250.0" prefHeight="76.0" prefWidth="442.0">
          <children>
             <Button fx:id="btnRegister" layoutX="54.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#btnRegisterClick" prefHeight="20.0" prefWidth="150.0" text="add" />
-            <Button layoutX="232.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="delete" />
-            <Button layoutX="417.0" layoutY="26.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="modify" />
+            <Button fx:id="delete" layoutX="232.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#delete" prefHeight="25.0" prefWidth="158.0" text="delete" />
          </children>
       </Pane>
+      <Label fx:id="warninglab" layoutX="336.0" layoutY="52.0" text=" " textFill="#f2eded">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

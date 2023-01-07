@@ -31,8 +31,8 @@
             <TableColumn fx:id="price_col" prefWidth="112.0" text="price" />
          </columns>
       </TableView>
-      <Button fx:id="modify_btn" layoutX="375.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#modifymed" prefHeight="25.0" prefWidth="149.0" text="refresh" AnchorPane.leftAnchor="375.0" AnchorPane.rightAnchor="276.0" />
-      <Label fx:id="warninglan" layoutX="458.0" layoutY="38.0" text=" " textFill="#e1dddd">
+      <Button fx:id="refresh" layoutX="375.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#refresh" prefHeight="25.0" prefWidth="149.0" text="refresh" AnchorPane.leftAnchor="375.0" AnchorPane.rightAnchor="276.0" />
+      <Label fx:id="warninglab" layoutX="574.0" layoutY="39.0" text=" " textFill="#e1dddd">
          <font>
             <Font size="14.0" />
          </font>
