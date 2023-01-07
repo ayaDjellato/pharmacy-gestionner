@@ -45,6 +45,14 @@ this work we have main functionalities:
 
 * example for patient and login interface:
       ![example video](https://user-images.githubusercontent.com/67550664/210804249-cd5e8f28-5fa5-4755-a6cc-7f5ae19d2f29.mp4)
+      
+*general usage of the project:
+       ![usage video](https://user-images.githubusercontent.com/67550664/211169339-56541331-7804-4764-8a09-46eefd04fe26.mp4)
+       
+*manager interface test:
+         ![manage interface](https://user-images.githubusercontent.com/67550664/211169444-fed84a56-b3ff-456e-be77-a4b75cd7d3ca.mp4)
+
+
 
 
 ### tools used in this project
