@@ -1,5 +1,5 @@
 # Pharmacy gestionner 
-
+Groupe 6 aya djellato et chouchaoui bachir
 this structure helps with the gestion of a pharmacy
 
 ### description
@@ -56,7 +56,7 @@ this work we have main functionalities:
 
 
 ### tools used in this project
-* we used vscode an IDE
+* we used vscode as IDE
 * php devserver for the database
 * scene builder for the design interfaces 
 
